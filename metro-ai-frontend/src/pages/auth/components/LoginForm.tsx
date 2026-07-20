@@ -10,17 +10,13 @@ export default function LoginForm() {
 
     <Card>
 
-      <h2 className="fw-bold">
+      <h2 className="fw-bold mb-2"> Welcome Back 👋 </h2>
 
-        Welcome Back
+<p className="metro-description-small mb-4">
 
-      </h2>
+    Sign in to continue managing your metro network.
 
-      <p className="metro-subtitle mb-4">
-
-        Sign in to continue.
-
-      </p>
+</p>
 
       <Input
         label="Email"
@@ -57,7 +53,38 @@ export default function LoginForm() {
         </Link>
 
       </div>
+<div className="d-flex justify-content-between align-items-center mb-4">
 
+    <div className="form-check">
+
+        <input
+            className="form-check-input"
+            type="checkbox"
+            id="remember"
+        />
+
+        <label
+            className="form-check-label"
+            htmlFor="remember"
+        >
+            Remember me
+        </label>
+
+    </div>
+
+    <a href="#">
+
+        Forgot Password?
+
+    </a>
+
+</div>
+
+<Button>
+
+    Login
+
+</Button>
     </Card>
 
   );

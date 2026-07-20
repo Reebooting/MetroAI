@@ -7,85 +7,121 @@ import {
 
 import Logo from "./Logo";
 
+const features = [
+  {
+    icon: <MapPinned size={22} />,
+    title: "Live Metro Tracking",
+    description: "Monitor every train in real time."
+  },
+  {
+    icon: <Route size={22} />,
+    title: "Smart Route Planning",
+    description: "AI assisted route optimization."
+  },
+  {
+    icon: <Bot size={22} />,
+    title: "Metro AI Assistant",
+    description: "Instant passenger support."
+  },
+  {
+    icon: <Ticket size={22} />,
+    title: "Digital QR Ticketing",
+    description: "Fast and secure ticket management."
+  }
+];
+
 export default function LoginHero() {
-
-  const features = [
-    {
-      icon: <MapPinned size={22} />,
-      title: "Live Metro Tracking",
-      desc: "Monitor trains in real time."
-    },
-    {
-      icon: <Route size={22} />,
-      title: "Smart Route Planning",
-      desc: "AI powered route optimization."
-    },
-    {
-      icon: <Ticket size={22} />,
-      title: "QR Ticket Management",
-      desc: "Secure digital ticketing."
-    },
-    {
-      icon: <Bot size={22} />,
-      title: "Metro AI Assistant",
-      desc: "Intelligent passenger support."
-    }
-  ];
-
   return (
-
-    <div className="login-hero">
+    <div>
 
       <Logo />
 
-      <h2 className="mt-5 fw-bold">
-        Welcome to the Future of Metro Management
-      </h2>
+      <h1 className="metro-heading mt-5">
+        Manage Your Entire Metro Network
+      </h1>
 
-      <p className="metro-subtitle mt-3 mb-5">
+      <p className="metro-description mb-5">
 
-        Built for passengers, operators and administrators.
+        One platform for passengers,
+        operators and administrators.
 
       </p>
+<div className="metro-stats">
 
-      {
+    <div className="metro-stat">
 
-        features.map((item) => (
+        <h2>128</h2>
+
+        <span>Stations</span>
+
+    </div>
+
+    <div className="metro-stat">
+
+        <h2>430</h2>
+
+        <span>Active Trains</span>
+
+    </div>
+
+    <div className="metro-stat">
+
+        <h2>2.3M</h2>
+
+        <span>Daily Riders</span>
+
+    </div>
+
+    <div className="metro-stat">
+
+        <h2>99.8%</h2>
+
+        <span>On Time</span>
+
+    </div>
+
+</div>
+      <div className="metro-line">
+
+        {features.map((item, index) => (
 
           <div
+            className="metro-step"
             key={item.title}
-            className="feature-card"
           >
 
-            <div className="feature-icon">
+            <div className="metro-icon">
 
               {item.icon}
 
             </div>
 
-            <div>
+            <div className="metro-content">
 
-              <h6 className="mb-1 fw-bold">
+              <h5>
 
                 {item.title}
 
-              </h6>
+              </h5>
 
-              <small className="text-muted">
+              <p>
 
-                {item.desc}
+                {item.description}
 
-              </small>
+              </p>
 
             </div>
 
+            {index !== features.length - 1 && (
+              <div className="metro-track"></div>
+            )}
+
           </div>
 
-        ))
+        ))}
 
-      }
+      </div>
 
     </div>
-
   );
 }

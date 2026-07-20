@@ -1,43 +1,37 @@
 import { TrainFront } from "lucide-react";
 
 interface LogoProps {
-  size?: "small" | "large";
+  small?: boolean;
 }
 
-export default function Logo({ size = "large" }: LogoProps) {
-  const iconSize = size === "large" ? 42 : 30;
-  const titleSize = size === "large" ? "2.6rem" : "1.5rem";
-  const subtitleSize = size === "large" ? "1rem" : ".8rem";
-
+export default function Logo({ small = false }: LogoProps) {
   return (
     <div className="d-flex align-items-center gap-3">
 
       <div className="metro-logo">
 
-        <TrainFront size={iconSize} color="white" />
+        <TrainFront
+          size={small ? 26 : 38}
+          strokeWidth={2.3}
+        />
 
       </div>
 
       <div>
 
-        <h1
-          className="m-0 fw-bold"
-          style={{
-            fontSize: titleSize,
-            color: "var(--metro-primary)"
-          }}
+        <h2
+          className={`fw-bold mb-0 ${
+            small ? "fs-4" : "display-5"
+          }`}
+          style={{ color: "var(--metro-primary)" }}
         >
           MetroAI
-        </h1>
+        </h2>
 
-        <p
-          className="m-0"
-          style={{
-            fontSize: subtitleSize,
-            color: "var(--metro-text-light)"
-          }}
-        >
-          Smart Metro Management
+        <p className="metro-subtitle mb-0">
+
+          Smart Metro Management System
+
         </p>
 
       </div>
