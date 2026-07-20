@@ -3,10 +3,36 @@ import {
   MapPinned,
   Route,
   Ticket,
+  TrainFront,
+  Building2,
+  Users,
+  Timer,
 } from "lucide-react";
 
 import Logo from "./Logo";
 
+const stats = [
+  {
+    icon: <Building2 size={26} />,
+    value: "128",
+    label: "Stations"
+  },
+  {
+    icon: <TrainFront size={26} />,
+    value: "430",
+    label: "Active Trains"
+  },
+  {
+    icon: <Users size={26} />,
+    value: "2.3M",
+    label: "Daily Riders"
+  },
+  {
+    icon: <Timer size={26} />,
+    value: "99.8%",
+    label: "On Time"
+  }
+];
 const features = [
   {
     icon: <MapPinned size={22} />,
@@ -30,6 +56,7 @@ const features = [
   }
 ];
 
+
 export default function LoginHero() {
   return (
     <div>
@@ -48,37 +75,26 @@ export default function LoginHero() {
       </p>
 <div className="metro-stats">
 
-    <div className="metro-stat">
+    {stats.map((stat) => (
 
-        <h2>128</h2>
+        <div
+            className="metro-stat"
+            key={stat.label}
+        >
 
-        <span>Stations</span>
+            <div className="stat-icon">
 
-    </div>
+                {stat.icon}
 
-    <div className="metro-stat">
+            </div>
 
-        <h2>430</h2>
+            <h2>{stat.value}</h2>
 
-        <span>Active Trains</span>
+            <span>{stat.label}</span>
 
-    </div>
+        </div>
 
-    <div className="metro-stat">
-
-        <h2>2.3M</h2>
-
-        <span>Daily Riders</span>
-
-    </div>
-
-    <div className="metro-stat">
-
-        <h2>99.8%</h2>
-
-        <span>On Time</span>
-
-    </div>
+    ))}
 
 </div>
       <div className="metro-line">

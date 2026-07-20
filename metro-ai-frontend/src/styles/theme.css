@@ -376,3 +376,24 @@
     font-size:15px;
 
 }
+.stat-icon{
+
+    width:52px;
+
+    height:52px;
+
+    border-radius:14px;
+
+    background:#eff6ff;
+
+    color:var(--metro-primary);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin-bottom:18px;
+
+}
