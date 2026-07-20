@@ -80,11 +80,6 @@ export default function LoginForm() {
 
 </div>
 
-<Button>
-
-    Login
-
-</Button>
     </Card>
 
   );
