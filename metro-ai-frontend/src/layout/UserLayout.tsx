@@ -1,30 +1,30 @@
-import Navbar from "../components/layouts/Navbar";
-import Sidebar from "../components/layouts/Sidebar";
-
 import { Outlet } from "react-router-dom";
 
-export default function UserLayout(){
+import Sidebar from "../components/layouts/Sidebar";
+import Navbar from "../components/layouts/Navbar";
 
-return(
+export default function UserLayout() {
 
-<div className="flex">
+    return (
 
-<Sidebar/>
+        <div className="dashboard-layout">
 
-<div className="flex-1">
+            <Sidebar />
 
-<Navbar/>
+            <main className="dashboard-main">
 
-<div className="p-8 bg-slate-100 min-h-screen">
+                <Navbar />
 
-<Outlet/>
+                <div className="dashboard-content">
 
-</div>
+                    <Outlet />
 
-</div>
+                </div>
 
-</div>
+            </main>
 
-);
+        </div>
+
+    );
 
 }

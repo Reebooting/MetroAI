@@ -1,27 +1,49 @@
-import { Bell, UserCircle2 } from "lucide-react";
+import {
+    Bell,
+    Search,
+    UserCircle
+} from "lucide-react";
 
 export default function Navbar() {
-
     return (
 
-        <header className="h-16 bg-white border-b flex items-center justify-between px-6">
+        <header className="top-navbar">
 
-            <h1 className="text-2xl font-bold text-blue-600">
+            <div>
 
-                🚇 MetroAI
+                <h3 className="fw-bold mb-0">
 
-            </h1>
+                    Dashboard
 
-            <div className="flex items-center gap-5">
+                </h3>
 
-                <Bell className="cursor-pointer"/>
+                <small className="text-muted">
 
-                <UserCircle2 size={34}/>
+                    Welcome back!
+
+                </small>
+
+            </div>
+
+            <div className="navbar-right">
+
+                <div className="search-box">
+
+                    <Search size={18} />
+
+                    <input
+                        placeholder="Search stations, routes..."
+                    />
+
+                </div>
+
+                <Bell size={22} />
+
+                <UserCircle size={34} />
 
             </div>
 
         </header>
 
     );
-
 }

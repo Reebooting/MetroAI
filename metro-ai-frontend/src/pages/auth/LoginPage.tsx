@@ -21,9 +21,7 @@ export default function LoginPage() {
 
         </div>
 
-        <div
-          className="col-lg-5 col-12 d-flex align-items-center justify-content-center"
-        >
+        <div className="col-lg-5 col-12 d-flex align-items-start justify-content-center">
 
           <div
             className="login-right w-100"

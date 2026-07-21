@@ -10,7 +10,7 @@ export default function LoginForm() {
 
     <Card>
 
-      <h2 className="fw-bold mb-2"> Welcome Back 👋 </h2>
+      <h2 className="fw-bold mb-2"> Welcome Back</h2>
 
 <p className="metro-description-small mb-4">
 
@@ -28,7 +28,22 @@ export default function LoginForm() {
         type="password"
         placeholder="Enter your password"
       />
+<div className="form-check">
 
+        <input
+            className="form-check-input"
+            type="checkbox"
+            id="remember"
+        />
+
+        <label
+            className="form-check-label"
+            htmlFor="remember"
+        >
+            Remember me
+        </label>
+
+    </div>
       <Button>
 
         Login
@@ -55,22 +70,7 @@ export default function LoginForm() {
       </div>
 <div className="d-flex justify-content-between align-items-center mb-4">
 
-    <div className="form-check">
-
-        <input
-            className="form-check-input"
-            type="checkbox"
-            id="remember"
-        />
-
-        <label
-            className="form-check-label"
-            htmlFor="remember"
-        >
-            Remember me
-        </label>
-
-    </div>
+    
 
     <a href="#">
 

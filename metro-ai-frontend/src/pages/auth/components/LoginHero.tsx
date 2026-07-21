@@ -35,24 +35,24 @@ const stats = [
 ];
 const features = [
   {
-    icon: <MapPinned size={22} />,
-    title: "Live Metro Tracking",
+    icon: <MapPinned size={24} />,
+    title: "Live Tracking",
     description: "Monitor every train in real time."
   },
   {
-    icon: <Route size={22} />,
-    title: "Smart Route Planning",
-    description: "AI assisted route optimization."
+    icon: <Route size={24} />,
+    title: "Smart Routing",
+    description: "AI assisted route planning."
   },
   {
-    icon: <Bot size={22} />,
-    title: "Metro AI Assistant",
+    icon: <Ticket size={24} />,
+    title: "QR Tickets",
+    description: "Secure digital ticketing."
+  },
+  {
+    icon: <Bot size={24} />,
+    title: "Metro AI",
     description: "Instant passenger support."
-  },
-  {
-    icon: <Ticket size={22} />,
-    title: "Digital QR Ticketing",
-    description: "Fast and secure ticket management."
   }
 ];
 
@@ -97,47 +97,35 @@ export default function LoginHero() {
     ))}
 
 </div>
-      <div className="metro-line">
+      
+<div className="feature-grid">
 
-        {features.map((item, index) => (
+    {features.map((feature) => (
 
-          <div
-            className="metro-step"
-            key={item.title}
-          >
+        <div
+            key={feature.title}
+            className="feature-card"
+        >
 
-            <div className="metro-icon">
+            <div className="feature-icon">
 
-              {item.icon}
-
-            </div>
-
-            <div className="metro-content">
-
-              <h5>
-
-                {item.title}
-
-              </h5>
-
-              <p>
-
-                {item.description}
-
-              </p>
+                {feature.icon}
 
             </div>
 
-            {index !== features.length - 1 && (
-              <div className="metro-track"></div>
-            )}
+            <div>
 
-          </div>
+                <h5>{feature.title}</h5>
 
-        ))}
+                <p>{feature.description}</p>
 
-      </div>
+            </div>
 
+        </div>
+
+    ))}
+
+</div>
     </div>
   );
 }

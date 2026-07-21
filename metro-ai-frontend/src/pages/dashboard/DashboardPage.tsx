@@ -1,23 +1,60 @@
-export default function DashboardPage(){
+import DashboardStats from "../../components/dashboard/DashboardStats";
+import LiveStatus from "../../components/dashboard/LiveStatus";
+import AIInsights from "../../components/dashboard/AIInsights";
+import RecentTickets from "../../components/dashboard/RecentTickets";
+import ActiveTrains from "../../components/dashboard/ActiveTrains";
+import SystemHealth from "../../components/dashboard/SystemHealth";
 
-return(
+export default function DashboardPage() {
+    return (
+        <div className="container-fluid">
 
-<div>
+            {/* Welcome Section */}
+            <div className="mb-4">
+                <h2 className="fw-bold">Welcome back 👋</h2>
+                <p className="text-muted mb-0">
+                    Here's what's happening across the Metro network today.
+                </p>
+            </div>
 
-<h1 className="text-4xl font-bold">
+            {/* KPI Cards */}
+            <DashboardStats />
 
-Welcome to MetroAI
+            {/* Row 1 */}
+            <div className="row g-4 mb-4">
 
-</h1>
+                <div className="col-lg-7">
+                    <LiveStatus />
+                </div>
 
-<p className="mt-3 text-gray-600">
+                <div className="col-lg-5">
+                    <AIInsights />
+                </div>
 
-Book tickets, search routes and manage your metro journey.
+            </div>
 
-</p>
+            {/* Row 2 */}
+            <div className="row g-4 mb-4">
 
-</div>
+                <div className="col-lg-7">
+                    <RecentTickets />
+                </div>
 
-);
+                <div className="col-lg-5">
+                    <ActiveTrains />
+                </div>
 
+            </div>
+
+            {/* Row 3 */}
+            <div className="row">
+
+                <div className="col-lg-12">
+                    <SystemHealth />
+                </div>
+
+            </div>
+
+        </div>
+    );
 }
