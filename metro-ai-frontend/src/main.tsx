@@ -23,8 +23,7 @@ import "./index.css";
 import { queryClient } from "./lib/queryClient";
 
 
-ReactDOM.createRoot(
-    document.getElementById("root")!
+ReactDOM.createRoot(document.getElementById("root")!
 ).render(
 
 <React.StrictMode>
@@ -33,11 +32,13 @@ ReactDOM.createRoot(
 
 <BrowserRouter>
 
-<App/>
+<AuthProvider>
 
-<Toaster
-position="top-right"
-/>
+<App />
+
+<Toaster position="top-right"/>
+
+</AuthProvider>
 
 </BrowserRouter>
 

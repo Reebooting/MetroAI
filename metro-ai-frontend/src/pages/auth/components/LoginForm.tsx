@@ -1,87 +1,174 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import toast from "react-hot-toast";
 
 import Button from "../../../components/ui/Button";
 import Card from "../../../components/ui/Card";
 import Input from "../../../components/ui/Input";
 
+import { login as loginService } from "../../../services/auth/authService";
+import { useAuth } from "../../../context/AuthContext";
+
+const schema = z.object({
+    email: z
+        .string()
+        .email("Enter a valid email"),
+
+    password: z
+        .string()
+        .min(6, "Password must be at least 6 characters"),
+});
+
+type LoginFormData = z.infer<typeof schema>;
+
 export default function LoginForm() {
 
-  return (
+    const navigate = useNavigate();
 
-    <Card>
+    const { login } = useAuth();
 
-      <h2 className="fw-bold mb-2"> Welcome Back</h2>
+    const {
 
-<p className="metro-description-small mb-4">
+        register,
 
-    Sign in to continue managing your metro network.
+        handleSubmit,
 
-</p>
+        formState: {
 
-      <Input
-        label="Email"
-        placeholder="Enter your email"
-      />
+            errors,
 
-      <Input
-        label="Password"
-        type="password"
-        placeholder="Enter your password"
-      />
-<div className="form-check">
+            isSubmitting,
 
-        <input
-            className="form-check-input"
-            type="checkbox"
-            id="remember"
-        />
+        },
 
-        <label
-            className="form-check-label"
-            htmlFor="remember"
-        >
-            Remember me
-        </label>
+    } = useForm<LoginFormData>({
 
-    </div>
-      <Button>
+        resolver: zodResolver(schema),
 
-        Login
+    });
 
-      </Button>
+   async function onSubmit(data: LoginFormData) {
 
-      <div className="text-center mt-4">
+    console.log("===== LOGIN START =====");
+    console.log("Form Data:", data);
 
-        <span className="text-muted">
+    try {
 
-          Don't have an account?
+        const response = await loginService(data);
 
-        </span>
+        console.log("API Response:", response);
 
-        <Link
-          to="/register"
-          className="ms-2 fw-semibold"
-        >
+        login(response.accessToken, response.user);
+        navigate("/admin/dashboard");
+        console.log("Token stored");
+        console.log(localStorage.getItem("token"));
+        console.log(localStorage.getItem("user"));
 
-          Register
+        toast.success("Login Successful");
 
-        </Link>
+        console.log("===== LOGIN END =====");
 
-      </div>
-<div className="d-flex justify-content-between align-items-center mb-4">
+    } catch (error) {
 
-    
+        console.error("Login Error:", error);
 
-    <a href="#">
+    }
 
-        Forgot Password?
+}
 
-    </a>
+    return (
 
-</div>
+        <Card>
 
-    </Card>
+            <h2 className="fw-bold mb-2">
 
-  );
+                Welcome Back
+
+            </h2>
+
+            <p className="metro-description-small mb-4">
+
+                Sign in to continue managing your metro network.
+
+            </p>
+
+            <form onSubmit={handleSubmit(onSubmit)}>
+
+                <Input
+                    label="Email"
+                    placeholder="Enter your email"
+                    {...register("email")}
+                />
+
+                <small className="text-danger">
+
+                    {errors.email?.message}
+
+                </small>
+
+                <Input
+                    label="Password"
+                    type="password"
+                    placeholder="Enter your password"
+                    {...register("password")}
+                />
+
+                <small className="text-danger">
+
+                    {errors.password?.message}
+
+                </small>
+
+                <div className="form-check mb-3">
+
+                    <input
+                        className="form-check-input"
+                        type="checkbox"
+                    />
+
+                    <label className="form-check-label">
+
+                        Remember me
+
+                    </label>
+
+                </div>
+
+                <Button disabled={isSubmitting}>
+
+                    {
+
+                        isSubmitting
+
+                            ? "Signing In..."
+
+                            : "Login"
+
+                    }
+
+                </Button>
+
+            </form>
+
+            <div className="text-center mt-4">
+
+                Don't have an account?
+
+                <Link
+                    to="/register"
+                    className="ms-2 fw-semibold"
+                >
+
+                    Register
+
+                </Link>
+
+            </div>
+
+        </Card>
+
+    );
 
 }
