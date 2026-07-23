@@ -1,4 +1,13 @@
+import api from "../../lib/axios";
+
 export interface LoginRequest {
+    email: string;
+    password: string;
+}
+
+export interface RegisterRequest {
+    firstName: string;
+    lastName: string;
     email: string;
     password: string;
 }
@@ -17,8 +26,6 @@ export interface LoginResponse {
     user: UserProfile;
 }
 
-import api from "../../lib/axios";
-
 export async function login(
     data: LoginRequest
 ): Promise<LoginResponse> {
@@ -31,18 +38,23 @@ export async function login(
     return response.data;
 }
 
-export async function register(data: {
-    firstName: string;
-    lastName: string;
-    email: string;
-    password: string;
-}) {
-    const response = await api.post("/auth/register", data);
+export async function register(
+    data: RegisterRequest
+) {
+
+    const response = await api.post(
+        "/auth/register",
+        data
+    );
 
     return response.data;
 }
 
 export async function getCurrentUser() {
-    const response = await api.get("/auth/me");
+
+    const response = await api.get(
+        "/auth/me"
+    );
+
     return response.data;
 }

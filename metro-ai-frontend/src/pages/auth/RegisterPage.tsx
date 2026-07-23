@@ -1,45 +1,20 @@
-import Card from "../../components/ui/Card";
-import Input from "../../components/ui/Input";
-import Button from "../../components/ui/Button";
+import LoginHero from "./components/LoginHero";
+import RegisterForm from "./components/RegisterForm";
 
 export default function RegisterPage() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-100">
+    return (
+        <div className="container-fluid min-vh-100">
+            <div className="row min-vh-100">
 
-      <Card>
+                <div className="col-lg-6 d-none d-lg-flex">
+                    <LoginHero />
+                </div>
 
-        <h1 className="mb-2 text-center text-3xl font-bold text-blue-600">
-          Create Account
-        </h1>
+                <div className="col-lg-6 d-flex align-items-center justify-content-center">
+                    <RegisterForm />
+                </div>
 
-        <Input
-          label="First Name"
-          placeholder="First Name"
-        />
-
-        <Input
-          label="Last Name"
-          placeholder="Last Name"
-        />
-
-        <Input
-          label="Email"
-          type="email"
-        />
-
-        <Input
-          label="Password"
-          type="password"
-        />
-
-        <Button>
-
-          Register
-
-        </Button>
-
-      </Card>
-
-    </div>
-  );
+            </div>
+        </div>
+    );
 }
